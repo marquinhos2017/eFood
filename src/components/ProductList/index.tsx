@@ -14,6 +14,7 @@ export const ProductsList = () => (
           image={
             'https://img.grouponcdn.com/bynder/2nSnS4pXyy5Kx8uPtFYXFkrpW1PC/2n-2048x1229/v1/t600x362.jpg'
           }
+          score={4.6}
         />
         <Product
           title={'Hioki Sushi '}
@@ -24,6 +25,7 @@ export const ProductsList = () => (
           image={
             'https://img.grouponcdn.com/bynder/2nSnS4pXyy5Kx8uPtFYXFkrpW1PC/2n-2048x1229/v1/t600x362.jpg'
           }
+          score={2.4}
         />
         <Product
           title={'Hioki Sushi '}
@@ -34,6 +36,7 @@ export const ProductsList = () => (
           image={
             'https://img.grouponcdn.com/bynder/2nSnS4pXyy5Kx8uPtFYXFkrpW1PC/2n-2048x1229/v1/t600x362.jpg'
           }
+          score={2.4}
         />
         <Product
           title={'Hioki Sushi '}
@@ -44,6 +47,7 @@ export const ProductsList = () => (
           image={
             'https://img.grouponcdn.com/bynder/2nSnS4pXyy5Kx8uPtFYXFkrpW1PC/2n-2048x1229/v1/t600x362.jpg'
           }
+          score={2.4}
         />
         <Product
           title={'Hioki Sushi '}
@@ -54,6 +58,7 @@ export const ProductsList = () => (
           image={
             'https://img.grouponcdn.com/bynder/2nSnS4pXyy5Kx8uPtFYXFkrpW1PC/2n-2048x1229/v1/t600x362.jpg'
           }
+          score={2.4}
         />
         <Product
           title={'Hioki Sushi '}
@@ -64,6 +69,7 @@ export const ProductsList = () => (
           image={
             'https://img.grouponcdn.com/bynder/2nSnS4pXyy5Kx8uPtFYXFkrpW1PC/2n-2048x1229/v1/t600x362.jpg'
           }
+          score={2.4}
         />
       </List>
     </div>

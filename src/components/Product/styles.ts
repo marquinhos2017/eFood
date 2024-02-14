@@ -47,3 +47,25 @@ export const Conteudo = styled.div`
     margin-top: 12px;
   }
 `
+export const HeaderTitle = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const Score = styled.div`
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 21px;
+    width: 21px;
+  }
+
+  p {
+    font-weight: bold;
+    font-size: 16px;
+    color: ${cores.vermelho};
+    margin-right: 8px;
+  }
+`

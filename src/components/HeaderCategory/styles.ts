@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
+import Link from 'react-router-dom'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -22,6 +23,7 @@ export const Logo = styled.img`
   max-width: 100px;
   position: absolute;
   left: 50%;
+  top: 25%;
   transform: translateX(-50%);
 `
 export const Conteudo = styled.div`

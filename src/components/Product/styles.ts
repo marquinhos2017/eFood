@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
+import Button from '../Button'
+import { ButtonLink } from '../Button/styles'
 
 export const Card = styled.div`
   background-color: ${cores.branco};
@@ -23,18 +25,25 @@ export const Titulo = styled.h3`
   display: block;
 
   color: ${cores.vermelho};
-  padding: 12px;
 `
 export const Descricao = styled.p`
   font-size: 14px;
   line-height: 18px;
   display: block;
   color: ${cores.vermelho};
-  padding: 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 `
 
 export const Infos = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
+`
+export const Conteudo = styled.div`
+  padding: 12px;
+
+  ${ButtonLink} {
+    margin-top: 12px;
+  }
 `

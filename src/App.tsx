@@ -6,14 +6,18 @@ import Banner from './components/Banner'
 import { Product } from './components/Product'
 import { ProductsList } from './components/ProductList'
 import { Footer } from './components/Footer'
+import { BrowserRouter } from 'react-router-dom'
+import Rotas from './routes'
 
 function App() {
   return (
     <>
-      <GlobalCss />
-      <Banner />
-      <ProductsList />
-      <Footer />
+      <BrowserRouter>
+        <GlobalCss />
+
+        <Rotas />
+        <Footer />
+      </BrowserRouter>
     </>
   )
 }

@@ -1,5 +1,7 @@
+import Button from '../Button'
 import Tag from '../Tag'
-import { Card, Descricao, Titulo, Infos } from './styles'
+import { Card, Descricao, Titulo, Infos, Conteudo } from './styles'
+import { Link } from 'react-router-dom'
 
 type Props = {
   title: string
@@ -15,8 +17,13 @@ export const Product = ({ description, image, infos, title }: Props) => (
         <Tag key={info}>{info}</Tag>
       ))}
     </Infos>
-    <Titulo>{title}</Titulo>
+    <Conteudo>
+      <Titulo>{title}</Titulo>
 
-    <Descricao>{description}</Descricao>
+      <Descricao>{description}</Descricao>
+      <Button title="Clique aqui e saiba mais" type="button" variant="primary">
+        Saiba mais
+      </Button>
+    </Conteudo>
   </Card>
 )

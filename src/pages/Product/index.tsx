@@ -3,6 +3,7 @@ import Banner from '../../components/Banner'
 import HeaderCategory from '../../components/HeaderCategory'
 
 import BannerCategory from '../../components/BannerCategory'
+import { ItemList } from '../../components/ItemList'
 
 const Product = () => {
   const { id } = useParams()
@@ -11,6 +12,7 @@ const Product = () => {
     <>
       <HeaderCategory />
       <BannerCategory />
+      <ItemList />
     </>
   )
 }

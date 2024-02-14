@@ -1,6 +1,6 @@
 import { Conteudo, Imagem, Logo, Titulo } from './styles'
 import bannerImg from '../../assets/banner.png'
-import logo from '../../assets/efood.png'
+import logo from '../../assets/logo.png'
 const HeaderCategory = () => (
   <Imagem style={{ backgroundImage: `url(${bannerImg})` }}>
     <div className="container">

@@ -1,6 +1,6 @@
 import { Imagem, Infos, Titulo } from './styles'
 import bannerImg from '../../assets/banner.png'
-import logo from '../../assets/efood.png'
+import logo from '../../assets/logo.png'
 import Tag from '../Tag'
 import Button from '../Button'
 const BannerCategory = () => (

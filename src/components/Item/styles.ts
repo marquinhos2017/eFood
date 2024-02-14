@@ -11,8 +11,8 @@ export const Card = styled.div`
   padding: 8px;
 
   img {
-    width: 100%;
-    height: 150px;
+    width: 304px;
+    height: 167px;
   }
 
   ${TagContainer} {
@@ -26,13 +26,13 @@ export const Titulo = styled.h3`
   font-size: 16px;
   display: block;
 
-  color: ${cores.branco};
+  color: ${cores.fundo};
 `
 export const Descricao = styled.p`
   font-size: 14px;
   line-height: 18px;
   display: block;
-  color: ${cores.branco};
+  color: ${cores.fundo};
   margin-top: 12px;
   margin-bottom: 12px;
 `

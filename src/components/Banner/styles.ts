@@ -3,7 +3,7 @@ import { cores } from '../../styles'
 
 export const Imagem = styled.div`
   width: 100%;
-  height: 360px;
+  height: 384px;
   display: block;
   background-repeat: no-repeat;
   background-size: cover;

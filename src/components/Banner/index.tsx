@@ -3,7 +3,7 @@ import bannerImg from '../../assets/banner.png'
 import logo from '../../assets/efood.png'
 const Banner = () => (
   <Imagem style={{ backgroundImage: `url(${bannerImg})` }}>
-    <Titulo>Viva esperiencas gastronomicas no conforto da sua casa</Titulo>
+    <Titulo>Viva experiências gastronômicas no conforto da sua casa</Titulo>
     <Logo src={logo} />
   </Imagem>
 )

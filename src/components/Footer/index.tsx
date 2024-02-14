@@ -1,4 +1,4 @@
-import logo from '../../assets/efood.png'
+import logo from '../../assets/logo.png'
 import { Logo } from '../Banner/styles'
 import { Container, Icons } from './styles'
 

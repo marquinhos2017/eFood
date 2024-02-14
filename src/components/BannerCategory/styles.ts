@@ -33,6 +33,8 @@ export const Imagem = styled.div`
 
     p {
       color: white;
+      font-size: 36px;
+      font-style: italic;
     }
   }
 `

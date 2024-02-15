@@ -9,10 +9,18 @@ type Props = {
   infos: string[]
   image: string
   id: number
+  onClick: () => void
 }
-export const Item = ({ description, image, infos, title, id }: Props) => (
+export const Item = ({
+  description,
+  image,
+  infos,
+  title,
+  id,
+  onClick
+}: Props) => (
   <Card>
-    <img src={image} alt={title} />
+    <img onClick={onClick} src={image} alt={title} />
 
     <Conteudo>
       <Titulo>{title}</Titulo>

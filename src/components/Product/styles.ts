@@ -3,11 +3,13 @@ import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import Button from '../Button'
 import { ButtonLink } from '../Button/styles'
+import { Link } from 'react-router-dom'
 
-export const Card = styled.div`
+export const Card = styled(Link)`
   background-color: ${cores.branco};
   border: 1px solid ${cores.vermelho};
   position: relative;
+  text-decoration: none;
 
   img {
     width: 100%;

@@ -15,15 +15,23 @@ import star from '../../assets/estrela.png'
 type Props = {
   title: string
   description: string
-  infos?: string[]
-  capa: string
+  infos: string[]
+  image: string
   score: number
+  id: number
 }
-export const Product = ({ description, capa, infos, title, score }: Props) => (
-  <Card>
-    <img src={capa} alt={title} />
+export const Product = ({
+  description,
+  image,
+  infos,
+  title,
+  score,
+  id
+}: Props) => (
+  <Card to={`/product/${id}`}>
+    <img src={image} alt={title} />
     <Infos>
-      {infos?.map((info) => (
+      {infos.map((info) => (
         <Tag key={info}>{info}</Tag>
       ))}
     </Infos>

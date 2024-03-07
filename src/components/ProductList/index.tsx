@@ -28,9 +28,10 @@ export const ProductsList = ({ games }: Props) => {
               key={game.id}
               title={game.titulo}
               description={game.descricao}
-              capa={game.capa}
+              image={game.capa}
               score={game.avaliacao}
               infos={getGameTags(game)}
+              id={game.id}
             />
           ))}
         </List>

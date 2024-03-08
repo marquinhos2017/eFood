@@ -26,7 +26,7 @@ export const Item = ({
       <Titulo>{title}</Titulo>
 
       <Descricao>{description}</Descricao>
-      <LinkButton to={`/Item:${id}`}>Adicionar Carrinho</LinkButton>
+      <LinkButton to={`item/${id}`}>Adicionar Carrinho</LinkButton>
     </Conteudo>
   </Card>
 )

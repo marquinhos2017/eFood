@@ -23,6 +23,7 @@ const Button = ({
         type="button"
         title={title}
         onClick={onClick}
+        to={to}
       >
         {children}
       </ButtonContainer>

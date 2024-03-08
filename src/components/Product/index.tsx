@@ -7,7 +7,8 @@ import {
   Infos,
   Conteudo,
   HeaderTitle,
-  Score
+  Score,
+  Buttonsaibamais
 } from './styles'
 import { Link } from 'react-router-dom'
 import star from '../../assets/estrela.png'
@@ -45,9 +46,7 @@ export const Product = ({
       </HeaderTitle>
 
       <Descricao>{description}</Descricao>
-      <Button title="Clique aqui e saiba mais" type="button" variant="primary">
-        Saiba mais
-      </Button>
+      <Buttonsaibamais to={`/product/${id}`}>Saiba mais</Buttonsaibamais>
     </Conteudo>
   </Card>
 )

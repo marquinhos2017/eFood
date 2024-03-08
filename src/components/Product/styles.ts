@@ -5,6 +5,17 @@ import Button from '../Button'
 import { ButtonLink } from '../Button/styles'
 import { Link } from 'react-router-dom'
 
+export const Buttonsaibamais = styled(Link)`
+  border: 2px solid ${cores.branco};
+  color: ${cores.vermelho};
+  background-color: black;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 8px;
+`
+
 export const Card = styled(Link)`
   background-color: ${cores.branco};
   border: 1px solid ${cores.vermelho};
@@ -19,6 +30,8 @@ export const Card = styled(Link)`
   ${TagContainer} {
     margin-right: 8px;
   }
+
+  padding-bottom: 20px;
 `
 
 export const Titulo = styled.h3`
@@ -34,7 +47,7 @@ export const Descricao = styled.p`
   display: block;
   color: ${cores.vermelho};
   margin-top: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 `
 
 export const Infos = styled.div`
@@ -45,8 +58,8 @@ export const Infos = styled.div`
 export const Conteudo = styled.div`
   padding: 12px;
 
-  ${ButtonLink} {
-    margin-top: 12px;
+  ${Buttonsaibamais} {
+    margin-top: 20px;
   }
 `
 export const HeaderTitle = styled.div`

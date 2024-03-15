@@ -48,14 +48,12 @@ export const Conteudo = styled.div`
   }
 `
 export const LinkButton = styled(Link)`
-  border: 2px solid ${cores.branco};
   color: ${cores.vermelho};
-  background-color: ${cores.fundo};
+  background-color: ${cores.rodape};
   font-size: 16px;
   font-weight: bold;
   padding: 8px 16px;
   text-decoration: none;
-  border-radius: 8px;
   display: block;
   text-align: center;
 `

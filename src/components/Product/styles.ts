@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom'
 
 export const Buttonsaibamais = styled(Link)`
   border: 2px solid ${cores.branco};
-  color: ${cores.vermelho};
-  background-color: black;
+  color: ${cores.branco};
+  background-color: ${cores.vermelho};
   font-size: 16px;
   font-weight: bold;
   padding: 8px 16px;

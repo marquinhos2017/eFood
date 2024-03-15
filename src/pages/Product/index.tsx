@@ -16,6 +16,7 @@ import {
 } from '../../components/ItemList/styles'
 import { Item } from '../../components/Item'
 import { ProductsList } from '../../components/ProductList'
+import { Imagem, Infos } from '../../components/BannerCategory/styles'
 
 export type Props = {
   games: Game[]
@@ -28,6 +29,7 @@ interface MenuItem {
   preco: number
   descricao: string
   porcao: string
+  banner: string
 }
 
 const Product = () => {
@@ -56,12 +58,33 @@ const Product = () => {
   }
 
   const [menu, setMenu] = useState<MenuItem[]>([])
+  const [banner, setBanner] = useState([null])
+  const [nome, setNome] = useState([null])
+  const [tipo, setTipo] = useState([null])
 
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((response) => response.json())
       .then((data) => setMenu(data.cardapio))
       .catch((error) => console.log(error))
+  }, [id])
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setBanner(res.capa))
+  }, [id])
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setNome(res.titulo))
+  }, [id])
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setTipo(res.tipo))
   }, [id])
 
   if (!menu) {
@@ -71,7 +94,16 @@ const Product = () => {
   return (
     <>
       <HeaderCategory />
-      <BannerCategory />
+      <Imagem style={{ backgroundImage: `url(${banner})` }}>
+        <div className="container">
+          <div>
+            <p>{nome}</p>
+          </div>
+          <Infos>
+            <h2>{tipo}</h2>
+          </Infos>
+        </div>
+      </Imagem>
       <Container>
         <div className="container">
           <List>

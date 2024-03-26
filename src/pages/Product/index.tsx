@@ -17,6 +17,7 @@ import {
 import { Item } from '../../components/Item'
 import { ProductsList } from '../../components/ProductList'
 import { Imagem, Infos } from '../../components/BannerCategory/styles'
+import { ModalItemInformations } from './styles'
 
 export type Props = {
   games: Game[]
@@ -133,21 +134,20 @@ const Product = () => {
 
       <Modal className={modal.isVisible ? 'visivel' : ''}>
         <ModalContent className="container">
-          <header>
-            <h4></h4>
-            <img src={close} onClick={() => closeModal()} />
-          </header>
           <ContentInfo>
             <img src={modal.url} alt="SpiderMan"></img>
-            <div>
-              <h4>{modal.name}</h4>
+            <ModalItemInformations>
+              <div>
+                <h4>{modal.name}</h4>
+                <img src={close} onClick={() => closeModal()} />
+              </div>
               <p>
                 {modal.description}
                 <br />
                 <br />
                 Serve: {modal.porcao}
               </p>
-            </div>
+            </ModalItemInformations>
           </ContentInfo>
         </ModalContent>
         <div

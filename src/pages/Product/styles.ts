@@ -81,3 +81,18 @@ export const ContentInfo = styled.div`
     margin-bottom: 16px;
   }
 `
+
+export const ModalItemInformations = styled.div`
+  div {
+    display: flex;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 8px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+    }
+  }
+`

@@ -18,15 +18,23 @@ export const Item = ({
   title,
   id,
   onClick
-}: Props) => (
-  <Card>
-    <img onClick={onClick} src={image} alt={title} />
+}: Props) => {
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 240) {
+      return descricao.slice(0, 240) + '...'
+    }
+    return descricao
+  }
+  return (
+    <Card>
+      <img src={image} alt={title} />
 
-    <Conteudo>
-      <Titulo>{title}</Titulo>
+      <Conteudo>
+        <Titulo>{title}</Titulo>
 
-      <Descricao>{description}</Descricao>
-      <LinkButton to={`item/${id}`}>Adicionar Carrinho</LinkButton>
-    </Conteudo>
-  </Card>
-)
+        <Descricao>{getDescricao(description)}</Descricao>
+        <LinkButton onClick={onClick}>Adicionar Carrinho</LinkButton>
+      </Conteudo>
+    </Card>
+  )
+}

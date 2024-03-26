@@ -47,7 +47,7 @@ export const Conteudo = styled.div`
     margin-top: 12px;
   }
 `
-export const LinkButton = styled(Link)`
+export const LinkButton = styled.button`
   color: ${cores.vermelho};
   background-color: ${cores.rodape};
   font-size: 16px;
@@ -56,4 +56,6 @@ export const LinkButton = styled(Link)`
   text-decoration: none;
   display: block;
   text-align: center;
+  border: none;
+  width: 100%;
 `

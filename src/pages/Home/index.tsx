@@ -6,6 +6,7 @@ import zelda from '../../assets/images/zelda.png'
 import starwars from '../../assets/images/star_wars.png'
 import diablo from '../../assets/images/diablo.png'
 import { useEffect, useState } from 'react'
+import { useGetRestaurantsQuery } from '../../services/api'
 
 export type Game = {
   id: number
@@ -15,21 +16,20 @@ export type Game = {
   tipo: string
   avaliacao: number
   destacado: boolean
+  cardapio: []
 }
 const Home = () => {
-  const [promocoes, setPromocoes] = useState<Game[]>([])
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setPromocoes(res))
-  }, [])
-
-  return (
-    <>
-      <Banner />
-      <ProductsList games={promocoes} />
-    </>
-  )
+  const { data: restaurantes } = useGetRestaurantsQuery()
+  if (restaurantes) {
+    return (
+      <>
+        <Banner />
+        <ProductsList games={restaurantes} />
+      </>
+    )
+  } else {
+    return <h4>Carregando</h4>
+  }
 }
 
 export default Home

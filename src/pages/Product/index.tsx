@@ -16,6 +16,7 @@ import { Item } from '../../components/Item'
 
 import { Imagem, Infos } from '../../components/BannerCategory/styles'
 import { ButtonAdd, ModalItemInformations } from './styles'
+import { useGetRestaurantQuery } from '../../services/api'
 
 export type Props = {
   games: Game[]
@@ -33,6 +34,7 @@ interface MenuItem {
 
 const Product = () => {
   const { id } = useParams()
+  const { data, isLoading, isError } = useGetRestaurantQuery(id!)
 
   const [modal, setModal] = useState({
     isVisible: false,
@@ -57,49 +59,29 @@ const Product = () => {
   }
 
   const [menu, setMenu] = useState<MenuItem[]>([])
-  const [banner, setBanner] = useState([null])
-  const [nome, setNome] = useState([null])
-  const [tipo, setTipo] = useState([null])
+  const [game, setGame] = useState<Game>()
 
   useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((response) => response.json())
-      .then((data) => setMenu(data.cardapio))
-      .catch((error) => console.log(error))
-  }, [id])
+    if (!isLoading && !isError && data) {
+      setMenu(data.cardapio) // Definindo o estado do menu com o dado recebido da consulta
+      setGame(data)
+    }
+  }, [data, isLoading, isError])
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setBanner(res.capa))
-  }, [id])
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setNome(res.titulo))
-  }, [id])
-
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setTipo(res.tipo))
-  }, [id])
-
-  if (!menu) {
+  if (!game) {
     return <h3>Carregando...</h3>
   }
 
   return (
     <>
       <HeaderCategory />
-      <Imagem style={{ backgroundImage: `url(${banner})` }}>
+      <Imagem style={{ backgroundImage: `url(${data?.capa})` }}>
         <div className="container">
           <div>
-            <p>{nome}</p>
+            <p>{data?.titulo}</p>
           </div>
           <Infos>
-            <h2>{tipo}</h2>
+            <h2>{data?.tipo}</h2>
           </Infos>
         </div>
       </Imagem>

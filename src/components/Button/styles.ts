@@ -11,9 +11,10 @@ export const ButtonContainer = styled(Link)<Props>`
     props.variant === 'primary' ? cores.vermelho : 'transparent'};
   font-size: 16px;
   font-weight: bold;
-  padding: 8px 16px;
+  padding: 8px;
   text-decoration: none;
   margin-bottom: 20px;
+  margin-top: 24px;
 `
 
 export const ButtonLink = styled(Link)`

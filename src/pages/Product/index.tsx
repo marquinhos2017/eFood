@@ -1,10 +1,8 @@
 import { useParams } from 'react-router-dom'
-import Banner from '../../components/Banner'
+
 import HeaderCategory from '../../components/HeaderCategory'
 import close from '../../assets/fechar.png'
 
-import BannerCategory from '../../components/BannerCategory'
-import { ItemList } from '../../components/ItemList'
 import { useEffect, useState } from 'react'
 import { Game } from '../Home'
 import {
@@ -15,9 +13,9 @@ import {
   ModalContent
 } from '../../components/ItemList/styles'
 import { Item } from '../../components/Item'
-import { ProductsList } from '../../components/ProductList'
+
 import { Imagem, Infos } from '../../components/BannerCategory/styles'
-import { ModalItemInformations } from './styles'
+import { ButtonAdd, ModalItemInformations } from './styles'
 
 export type Props = {
   games: Game[]
@@ -147,6 +145,7 @@ const Product = () => {
                 <br />
                 Serve: {modal.porcao}
               </p>
+              <ButtonAdd>Adicionar Carrinho</ButtonAdd>
             </ModalItemInformations>
           </ContentInfo>
         </ModalContent>

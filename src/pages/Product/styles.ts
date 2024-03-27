@@ -96,3 +96,16 @@ export const ModalItemInformations = styled.div`
     }
   }
 `
+export const ButtonAdd = styled.button`
+  margin-top: 24px;
+  color: ${cores.vermelho};
+  background-color: ${cores.rodape};
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px 7px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+`

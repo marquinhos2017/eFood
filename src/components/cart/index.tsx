@@ -1,14 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import starWars from '../../assets/logo.png'
 
-import Tag from '../Tag'
 import {
   ButtonAdd,
   CartContainer,
   CartItem,
   Overlay,
   Prices,
-  Quantity,
   Sidebar
 } from './styles'
 import { RootReducer } from '../../store'

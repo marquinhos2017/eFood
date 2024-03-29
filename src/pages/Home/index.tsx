@@ -18,6 +18,15 @@ export type Game = {
   destacado: boolean
   cardapio: []
 }
+
+export type cardapio = {
+  isVisible: boolean
+  type: string
+  url: string
+  name: string
+  description: string
+  porcao: string
+}
 const Home = () => {
   const { data: restaurantes } = useGetRestaurantsQuery()
   if (restaurantes) {

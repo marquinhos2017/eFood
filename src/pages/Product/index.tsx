@@ -4,7 +4,7 @@ import HeaderCategory from '../../components/HeaderCategory'
 import close from '../../assets/fechar.png'
 
 import { useEffect, useState } from 'react'
-import { Game } from '../Home'
+import { Game, cardapio } from '../Home'
 import {
   Container,
   ContentInfo,
@@ -17,6 +17,8 @@ import { Item } from '../../components/Item'
 import { Imagem, Infos } from '../../components/BannerCategory/styles'
 import { ButtonAdd, ModalItemInformations } from './styles'
 import { useGetRestaurantQuery } from '../../services/api'
+import { useDispatch } from 'react-redux'
+import { add } from '../../store/reducers/cart'
 
 export type Props = {
   games: Game[]
@@ -44,6 +46,16 @@ const Product = () => {
     description: '',
     porcao: ''
   })
+
+  const [cardapio, setCardapio] = useState({
+    isVisible: false,
+    type: 'image',
+    url: '',
+    name: '',
+    description: '',
+    porcao: ''
+  })
+
   const [modalEstaberto, setModalEstaAberto] = useState(false)
   const [modalUrl, setModalUrl] = useState('')
 
@@ -60,6 +72,11 @@ const Product = () => {
 
   const [menu, setMenu] = useState<MenuItem[]>([])
   const [game, setGame] = useState<Game>()
+
+  const dispatch = useDispatch()
+  const addToCart = () => {
+    dispatch(add(cardapio))
+  }
 
   useEffect(() => {
     if (!isLoading && !isError && data) {
@@ -127,7 +144,7 @@ const Product = () => {
                 <br />
                 Serve: {modal.porcao}
               </p>
-              <ButtonAdd>Adicionar Carrinho</ButtonAdd>
+              <ButtonAdd onClick={addToCart}>Adicionar Carrinho</ButtonAdd>
             </ModalItemInformations>
           </ContentInfo>
         </ModalContent>

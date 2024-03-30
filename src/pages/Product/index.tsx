@@ -18,7 +18,8 @@ import { Imagem, Infos } from '../../components/BannerCategory/styles'
 import { ButtonAdd, ModalItemInformations } from './styles'
 import { useGetRestaurantQuery } from '../../services/api'
 import { useDispatch } from 'react-redux'
-import { add } from '../../store/reducers/cart'
+import { add, open } from '../../store/reducers/cart'
+import { isVisible } from '@testing-library/user-event/dist/utils'
 
 export type Props = {
   games: Game[]
@@ -42,18 +43,34 @@ const Product = () => {
     isVisible: false,
     type: 'image',
     url: '',
-    name: '',
-    description: '',
-    porcao: ''
+    nome: '',
+    descricao: '',
+    porcao: '',
+    preco: '',
+    foto: ''
   })
+
+  type item_cardapio = cardapio
+  const item_cardapio = {
+    isVisible: false,
+    type: 'image',
+    url: '',
+    nome: modal.nome,
+    descricao: modal.descricao,
+    porcao: modal.porcao,
+    preco: modal.preco,
+    foto: modal.foto
+  }
 
   const [cardapio, setCardapio] = useState({
     isVisible: false,
     type: 'image',
     url: '',
-    name: '',
-    description: '',
-    porcao: ''
+    nome: '',
+    descricao: '',
+    porcao: '',
+    preco: '',
+    foto: ''
   })
 
   const [modalEstaberto, setModalEstaAberto] = useState(false)
@@ -64,9 +81,11 @@ const Product = () => {
       isVisible: false,
       type: 'image',
       url: '',
-      name: '',
-      description: '',
-      porcao: ''
+      nome: '',
+      descricao: '',
+      porcao: '',
+      preco: '',
+      foto: ''
     })
   }
 
@@ -75,7 +94,8 @@ const Product = () => {
 
   const dispatch = useDispatch()
   const addToCart = () => {
-    dispatch(add(cardapio))
+    dispatch(add(item_cardapio))
+    dispatch(open())
   }
 
   useEffect(() => {
@@ -118,9 +138,11 @@ const Product = () => {
                     isVisible: true,
                     type: 'image',
                     url: `${item.foto}`,
-                    name: `${item.nome}`,
-                    description: `${item.descricao}`,
-                    porcao: `${item.porcao}`
+                    nome: `${item.nome}`,
+                    descricao: `${item.descricao}`,
+                    porcao: `${item.porcao}`,
+                    preco: `${item.preco}`,
+                    foto: `${item.foto}`
                   })
                 }}
               ></Item>
@@ -135,11 +157,11 @@ const Product = () => {
             <img src={modal.url} alt="SpiderMan"></img>
             <ModalItemInformations>
               <div>
-                <h4>{modal.name}</h4>
+                <h4>{modal.nome}</h4>
                 <img src={close} onClick={() => closeModal()} />
               </div>
               <p>
-                {modal.description}
+                {modal.descricao}
                 <br />
                 <br />
                 Serve: {modal.porcao}

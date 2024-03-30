@@ -12,37 +12,30 @@ import {
 import { RootReducer } from '../../store'
 import { close } from '../../store/reducers/cart'
 export const Cart = () => {
-  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
   const closeCart = () => {
     dispatch(close())
   }
-
+  console.log(items)
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart}></Overlay>
       <Sidebar>
         <ul>
-          <CartItem>
-            <img src={starWars} alt="" srcSet="" />
-            <div>
-              <h3>Nome do Jogo</h3>
+          {items.map((item) => (
+            <CartItem key={item.nome}>
+              <img src={item.foto} alt="" srcSet="" />
+              <div>
+                <h3>{item.nome}</h3>
 
-              <span>R$ 150,00</span>
-            </div>
-            <button type="button"></button>
-          </CartItem>
-          <CartItem>
-            <img src={starWars} alt="" srcSet="" />
-            <div>
-              <h3>Nome do Jogo</h3>
-
-              <span>R$ 150,00</span>
-            </div>
-            <button type="button"></button>
-          </CartItem>
+                <span></span>
+              </div>
+              <button type="button"></button>
+            </CartItem>
+          ))}
         </ul>
 
         <Prices>

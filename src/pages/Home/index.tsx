@@ -23,9 +23,11 @@ export type cardapio = {
   isVisible: boolean
   type: string
   url: string
-  name: string
-  description: string
+  nome: string
+  descricao: string
   porcao: string
+  preco: string
+  foto: string
 }
 const Home = () => {
   const { data: restaurantes } = useGetRestaurantsQuery()

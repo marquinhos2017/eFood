@@ -26,13 +26,13 @@ export type Props = {
 }
 
 interface MenuItem {
-  id: number
   nome: string
   foto: string
   preco: number
   descricao: string
   porcao: string
   banner: string
+  id: number
 }
 
 const Product = () => {
@@ -47,7 +47,8 @@ const Product = () => {
     descricao: '',
     porcao: '',
     preco: 0,
-    foto: ''
+    foto: '',
+    id_cardapio: 0
   })
 
   type item_cardapio = cardapio
@@ -59,7 +60,8 @@ const Product = () => {
     descricao: modal.descricao,
     porcao: modal.porcao,
     preco: modal.preco,
-    foto: modal.foto
+    foto: modal.foto,
+    id_cardapio: modal.id_cardapio
   }
 
   const [cardapio, setCardapio] = useState({
@@ -70,7 +72,9 @@ const Product = () => {
     descricao: '',
     porcao: '',
     preco: 0,
-    foto: ''
+    foto: '',
+    id: '',
+    item_cardapio: 0
   })
 
   const [modalEstaberto, setModalEstaAberto] = useState(false)
@@ -85,7 +89,8 @@ const Product = () => {
       descricao: '',
       porcao: '',
       preco: 0,
-      foto: ''
+      foto: '',
+      id_cardapio: 0
     })
   }
 
@@ -142,7 +147,8 @@ const Product = () => {
                     descricao: `${item.descricao}`,
                     porcao: `${item.porcao}`,
                     preco: item.preco,
-                    foto: `${item.foto}`
+                    foto: `${item.foto}`,
+                    id_cardapio: item.id
                   })
                 }}
               ></Item>

@@ -28,6 +28,7 @@ export type cardapio = {
   porcao: string
   preco: number
   foto: string
+  id_cardapio: number
 }
 const Home = () => {
   const { data: restaurantes } = useGetRestaurantsQuery()

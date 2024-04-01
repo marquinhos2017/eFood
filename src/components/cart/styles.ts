@@ -109,7 +109,7 @@ export const CartItem = styled.li`
     height: 16px;
     border: none;
     background-color: transparent;
-    pointer: cursor;
+    cursor: pointer;
     position: absolute;
     bottom: 8px;
     right: 8px;

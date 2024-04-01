@@ -10,7 +10,7 @@ import {
   Sidebar
 } from './styles'
 import { RootReducer } from '../../store'
-import { close } from '../../store/reducers/cart'
+import { close, remove, ver } from '../../store/reducers/cart'
 export const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 
@@ -22,10 +22,15 @@ export const Cart = () => {
 
   const getTotalPrice = () => {
     return items.reduce((acumulador, valorAtual) => {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return (acumulador += valorAtual.preco!)
     }, 0)
   }
-  console.log(items)
+
+  const removeItem = (id: number) => {
+    dispatch(remove(id))
+  }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart}></Overlay>
@@ -39,7 +44,10 @@ export const Cart = () => {
 
                 <span></span>
               </div>
-              <button type="button"></button>
+              <button
+                onClick={() => removeItem(item.id_cardapio)}
+                type="button"
+              ></button>
             </CartItem>
           ))}
         </ul>

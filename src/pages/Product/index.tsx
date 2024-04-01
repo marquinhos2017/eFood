@@ -46,7 +46,7 @@ const Product = () => {
     nome: '',
     descricao: '',
     porcao: '',
-    preco: '',
+    preco: 0,
     foto: ''
   })
 
@@ -69,7 +69,7 @@ const Product = () => {
     nome: '',
     descricao: '',
     porcao: '',
-    preco: '',
+    preco: 0,
     foto: ''
   })
 
@@ -84,7 +84,7 @@ const Product = () => {
       nome: '',
       descricao: '',
       porcao: '',
-      preco: '',
+      preco: 0,
       foto: ''
     })
   }
@@ -141,7 +141,7 @@ const Product = () => {
                     nome: `${item.nome}`,
                     descricao: `${item.descricao}`,
                     porcao: `${item.porcao}`,
-                    preco: `${item.preco}`,
+                    preco: item.preco,
                     foto: `${item.foto}`
                   })
                 }}

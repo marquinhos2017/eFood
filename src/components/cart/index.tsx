@@ -19,6 +19,12 @@ export const Cart = () => {
   const closeCart = () => {
     dispatch(close())
   }
+
+  const getTotalPrice = () => {
+    return items.reduce((acumulador, valorAtual) => {
+      return (acumulador += valorAtual.preco!)
+    }, 0)
+  }
   console.log(items)
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
@@ -40,7 +46,7 @@ export const Cart = () => {
 
         <Prices>
           <p>Valor total</p>
-          <span>R$ 250,00</span>
+          <span>R$ {getTotalPrice().toFixed(2)}</span>
         </Prices>
         <ButtonAdd>Continuar com a entrega</ButtonAdd>
       </Sidebar>

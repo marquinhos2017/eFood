@@ -26,7 +26,7 @@ export type cardapio = {
   nome: string
   descricao: string
   porcao: string
-  preco: string
+  preco: number
   foto: string
 }
 const Home = () => {

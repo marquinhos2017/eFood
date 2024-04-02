@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux'
-import starWars from '../../assets/logo.png'
 
 import {
   ButtonAdd,
@@ -10,7 +9,7 @@ import {
   Sidebar
 } from './styles'
 import { RootReducer } from '../../store'
-import { close, remove, ver } from '../../store/reducers/cart'
+import { close, remove } from '../../store/reducers/cart'
 export const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 

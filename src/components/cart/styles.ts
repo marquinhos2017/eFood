@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { styled } from 'styled-components'
 import { TagContainer } from '../Tag/styles'
 import fechar from '../../assets/iconFechar.png'
@@ -43,6 +43,10 @@ export const Sidebar = styled.aside`
   background-color: ${cores.vermelho};
   z-index: 1;
   padding: 40px 16px 0 16px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 320px;
+  }
 
   ul {
   }

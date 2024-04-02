@@ -19,7 +19,6 @@ import { ButtonAdd, ModalItemInformations } from './styles'
 import { useGetRestaurantQuery } from '../../services/api'
 import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
-import { isVisible } from '@testing-library/user-event/dist/utils'
 
 export type Props = {
   games: Game[]
@@ -160,7 +159,7 @@ const Product = () => {
       <Modal className={modal.isVisible ? 'visivel' : ''}>
         <ModalContent className="container">
           <ContentInfo>
-            <img src={modal.url} alt="SpiderMan"></img>
+            <img src={modal.url} alt="SpiderMan" />
             <ModalItemInformations>
               <div>
                 <h4>{modal.nome}</h4>
@@ -176,6 +175,7 @@ const Product = () => {
             </ModalItemInformations>
           </ContentInfo>
         </ModalContent>
+
         <div
           onClick={() => {
             closeModal()

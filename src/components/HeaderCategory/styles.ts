@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
-import Link from 'react-router-dom'
+import { breakpoints, cores } from '../../styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -25,11 +24,20 @@ export const Logo = styled.img`
   left: 50%;
   top: 25%;
   transform: translateX(-50%);
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 `
 export const Conteudo = styled.div`
   display: flex;
-  padding: 40px 0;
+  padding: 40px 0px;
   align-items: center;
   justify-content: space-between;
   position: relative;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `

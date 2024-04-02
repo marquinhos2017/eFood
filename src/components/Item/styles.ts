@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
-import Button from '../Button'
 import { ButtonLink } from '../Button/styles'
-import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
   background-color: ${cores.vermelho};
@@ -11,7 +9,7 @@ export const Card = styled.div`
   padding: 8px;
 
   img {
-    width: 304px;
+    width: 100%;
     height: 167px;
   }
 

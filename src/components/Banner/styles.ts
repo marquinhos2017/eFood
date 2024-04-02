@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -7,6 +7,14 @@ export const Imagem = styled.div`
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 200px;
+  }
+
+  @media (min-width: ${breakpoints.tablet}) and (max-width: ${breakpoints.desktop}) {
+    height: 300px;
+  }
 `
 export const Titulo = styled.h2`
   font-size: 36px;
@@ -19,6 +27,16 @@ export const Titulo = styled.h2`
   transform: translate(-50%, -50%);
   text-align: center;
   color: ${cores.vermelho};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 20px;
+    top: 15%;
+  }
+
+  @media (min-width: ${breakpoints.tablet}) and (max-width: ${breakpoints.desktop}) {
+    font-size: 26px;
+    top: 20%;
+  }
 `
 
 export const Logo = styled.img`

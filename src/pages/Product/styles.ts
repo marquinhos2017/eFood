@@ -62,24 +62,7 @@ export const ModalContent = styled.div`
 `
 
 export const ContentInfo = styled.div`
-  display: flex;
-
-  img {
-    height: 200px;
-    width: 200px;
-    margin-right: 24px;
-  }
-
-  p {
-    color: ${cores.fundo};
-    font-size: 14px;
-  }
-
-  h4 {
-    font-size: 16px;
-    color: ${cores.fundo};
-    margin-bottom: 16px;
-  }
+  display: none;
 `
 
 export const ModalItemInformations = styled.div`
@@ -89,7 +72,7 @@ export const ModalItemInformations = styled.div`
 
     img {
       position: absolute;
-      top: 8px;
+
       right: 0;
       width: 16px;
       height: 16px;

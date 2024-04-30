@@ -13,6 +13,9 @@ export const ButtonAdd = styled.a`
   display: inline-block;
   text-align: center;
   cursor: pointer;
+  line-height: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
 `
 export const Overlay = styled.div`
   position: absolute;
@@ -118,4 +121,33 @@ export const CartItem = styled.li`
     bottom: 8px;
     right: 8px;
   }
+`
+
+export const Titulo = styled.h3`
+  color: ${cores.rodape};
+  margin-bottom: 16px;
+`
+
+export const InputGroup = styled.div`
+  fkex: auto;
+  label {
+    color: ${cores.rodape};
+    margin-bottom: 8px;
+    display: block;
+    font-weight: bold;
+  }
+
+  input {
+    background-color: ${cores.rodape};
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid ${cores.rodape};
+    width: 100%;
+  }
+`
+
+export const Row = styled.div`
+  display: flex;
+  margin-bottom: 8px;
+  column-gap: 24px;
 `

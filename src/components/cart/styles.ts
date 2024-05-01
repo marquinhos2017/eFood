@@ -4,6 +4,10 @@ import { styled } from 'styled-components'
 import { TagContainer } from '../Tag/styles'
 import fechar from '../../assets/iconFechar.png'
 
+type InputGroupProps = {
+  maxWidth?: string
+}
+
 export const ButtonAdd = styled.a`
   color: ${cores.vermelho};
   background-color: ${cores.rodape};
@@ -128,7 +132,8 @@ export const Titulo = styled.h3`
   margin-bottom: 16px;
 `
 
-export const InputGroup = styled.div`
+export const InputGroup = styled.div<InputGroupProps>`
+  max-width: ${(props) => props.maxWidth || 'auto'};
   fkex: auto;
   label {
     color: ${cores.rodape};

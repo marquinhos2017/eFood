@@ -123,15 +123,40 @@ export const Cart = () => {
 
         {step === 'payment' && (
           <>
-            <h2>Payment</h2>
-            {/* Opções de pagamento */}
-            <button onClick={() => goToStep('done')}>
-              Finalizar Pagamento
-            </button>{' '}
+            <Titulo>Pagamento - Valor a pagar R$ 190,00</Titulo>
+            <Row>
+              <InputGroup>
+                <label htmlFor="cardOwner">Nome no Cartao</label>
+                <input type="text" id="cardOwner" />
+              </InputGroup>
+            </Row>
+            <Row>
+              <InputGroup maxWidth="228px">
+                <label htmlFor="numberCard">Numero do Cartao</label>
+                <input type="text" id="numberCard" />
+              </InputGroup>
+              <InputGroup maxWidth="87px">
+                <label htmlFor="codeCard">CVV</label>
+                <input type="text" id="codeCard" />
+              </InputGroup>
+            </Row>
+            <Row>
+              <InputGroup>
+                <label htmlFor="monthExpired">Mes de vencimento</label>
+                <input type="text" id="monthExpired" />
+              </InputGroup>
+              <InputGroup>
+                <label htmlFor="yearExpired">Ano de vencimento</label>
+                <input type="text" id="yearExpired" />
+              </InputGroup>
+            </Row>
             <br />
-            <button onClick={() => goToStep('delivery')}>
-              Voltar para Entrega
-            </button>
+            {/* Opções de pagamento */}
+            <ButtonAdd onClick={() => goToStep('done')}>Finalizar</ButtonAdd>
+            <br />
+            <ButtonAdd onClick={() => goToStep('delivery')}>
+              Voltar para a edicao de endereco
+            </ButtonAdd>{' '}
             <br />
             {/* Botão para finalizar */}
           </>

@@ -15,6 +15,18 @@ export const ButtonContainer = styled(Link)<Props>`
   text-decoration: none;
   margin-bottom: 20px;
   margin-top: 24px;
+  color: ${cores.vermelho};
+  background-color: ${cores.rodape};
+  padding: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  line-height: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  width: 100%;
 `
 
 export const ButtonLink = styled(Link)`

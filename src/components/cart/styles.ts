@@ -4,6 +4,10 @@ import { styled } from 'styled-components'
 import { TagContainer } from '../Tag/styles'
 import fechar from '../../assets/iconFechar.png'
 
+type RowProps = {
+  marginTop?: string
+}
+
 type InputGroupProps = {
   maxWidth?: string
 }
@@ -133,6 +137,7 @@ export const Titulo = styled.h3`
 `
 
 export const InputGroup = styled.div<InputGroupProps>`
+  width: 100%;
   max-width: ${(props) => props.maxWidth || 'auto'};
   fkex: auto;
   label {
@@ -151,8 +156,9 @@ export const InputGroup = styled.div<InputGroupProps>`
   }
 `
 
-export const Row = styled.div`
+export const Row = styled.div<RowProps>`
   display: flex;
   margin-bottom: 8px;
   column-gap: 24px;
+  max-top: ${(props) => props.marginTop || 'auto'};
 `

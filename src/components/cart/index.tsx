@@ -17,8 +17,10 @@ import { SetStateAction, useState } from 'react'
 import { useFormik } from 'formik'
 import Button from '../Button'
 import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../services/api'
 export const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
   const form = useFormik({
     initialValues: {
       fullName: '',
@@ -69,7 +71,34 @@ export const Cart = () => {
         .required('O campo eh obrigatorio')
     }),
     onSubmit: (values) => {
-      console.log(values)
+      purchase({
+        billing: {
+          document: values.address,
+          email: values.cep,
+          name: values.fullName
+        },
+        delivery: {
+          email: values.cep
+        },
+        payment: {
+          installments: 1,
+          card: {
+            active: true,
+            code: Number(values.codeCard),
+            name: values.cardOwner,
+            number: values.numberCard,
+            owner: {
+              document: values.cardOwner,
+              name: values.fullName
+            },
+            expires: {
+              month: 1,
+              year: 2023
+            }
+          }
+        },
+        products: [{ id: 1, price: 10 }]
+      })
     }
   })
   console.log(form)

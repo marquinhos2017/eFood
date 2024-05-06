@@ -1,10 +1,18 @@
-import { Conteudo, Imagem, Logo, Titulo } from './styles'
+import {
+  Conteudo,
+  Imagem,
+  Logo,
+  Titulo,
+  Hamburguer,
+  CardButton
+} from './styles'
 import bannerImg from '../../assets/banner.png'
 import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom'
 import { open } from '../../store/reducers/cart'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+import cartIcon from '../../assets/carrinho.png'
 const HeaderCategory = () => {
   const dispatch = useDispatch()
 
@@ -20,9 +28,10 @@ const HeaderCategory = () => {
           <Link to="/">
             <Logo src={logo} />
           </Link>
-          <Titulo onClick={openCart}>
-            {items.length} produto(s) no carrinho
-          </Titulo>
+          <CardButton onClick={openCart}>
+            {items.length} <span>- produto(s) no carrinho</span>
+            <img src={cartIcon} alt="cartIcon" />
+          </CardButton>
         </Conteudo>
       </div>
     </Imagem>

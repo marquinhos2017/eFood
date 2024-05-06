@@ -18,6 +18,22 @@ export const Titulo = styled.h2`
   color: ${cores.vermelho};
 `
 
+export const CardButton = styled.a`
+  display: flex;
+  color: ${cores.vermelho};
+  font-weight: bold;
+
+  img {
+    margin-left: 8px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    span {
+      display: none;
+    }
+  }
+`
+
 export const Logo = styled.img`
   max-width: 100px;
   position: absolute;
@@ -39,5 +55,19 @@ export const Conteudo = styled.div`
   @media (max-width: ${breakpoints.desktop}) {
     padding-left: 20px;
     padding-right: 20px;
+  }
+`
+
+export const Hamburguer = styled.div`
+  width: 32px;
+  span {
+    margin-bottom: 4px;
+    height: 2px;
+    display: block;
+    width: 100%;
+    background-color: ${cores.vermelho};
+  }
+  @media (min-width: ${breakpoints.tablet}) {
+    display: none;
   }
 `

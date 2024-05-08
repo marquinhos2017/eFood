@@ -4,6 +4,7 @@ import {
   ButtonAdd,
   CartContainer,
   CartItem,
+  Done,
   InputGroup,
   Overlay,
   Prices,
@@ -20,7 +21,8 @@ import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
 export const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
+  const [purchase, { isLoading, isError, data, isSuccess }] =
+    usePurchaseMutation()
   const form = useFormik({
     initialValues: {
       fullName: '',
@@ -142,243 +144,276 @@ export const Cart = () => {
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart}></Overlay>
       <Sidebar>
-        <form onSubmit={form.handleSubmit}>
-          {step === 'cart' && (
-            <>
-              <ul>
-                {items.map((item) => (
-                  <CartItem key={item.nome}>
-                    <img src={item.foto} alt="" srcSet="" />
-                    <div>
-                      <h3>{item.nome}</h3>
+        <div>
+          {isSuccess ? (
+            <Done>
+              <h2>Pedido realizado - {data.orderId}</h2> <br></br>
+              <p>
+                Estamos felizes em informar que seu pedido já está em processo
+                de preparação e, em breve, será entregue no endereço fornecido.
+                <br /> <br />
+                Gostaríamos de ressaltar que nossos entregadores não estão
+                autorizados a realizar cobranças extras.
+                <br /> <br /> Lembre-se da importância de higienizar as mãos
+                após o recebimento do pedido, garantindo assim sua segurança e
+                bem-estar durante a refeição. <br /> <br /> Esperamos que
+                desfrute de uma deliciosa e agradável experiência gastronômica.
+                Bom apetite! <br /> <br />
+              </p>
+              <ButtonAdd onClick={closeCart}>Concluir</ButtonAdd>{' '}
+            </Done>
+          ) : (
+            <form onSubmit={form.handleSubmit}>
+              {step === 'cart' && (
+                <>
+                  <ul>
+                    {items.map((item) => (
+                      <CartItem key={item.nome}>
+                        <img src={item.foto} alt="" srcSet="" />
+                        <div>
+                          <h3>{item.nome}</h3>
 
-                      <span></span>
-                    </div>
-                    <button
-                      onClick={() => removeItem(item.id_cardapio)}
-                      type="button"
-                    ></button>
-                  </CartItem>
-                ))}
-              </ul>
+                          <span></span>
+                        </div>
+                        <button
+                          onClick={() => removeItem(item.id_cardapio)}
+                          type="button"
+                        ></button>
+                      </CartItem>
+                    ))}
+                  </ul>
 
-              <Prices>
-                <p>Valor total</p>
-                <span>R$ {getTotalPrice().toFixed(2)}</span>
-              </Prices>
-              <ButtonAdd onClick={() => goToStep('delivery')}>
-                Continuar com a entrega
-              </ButtonAdd>
-            </>
+                  <Prices>
+                    <p>Valor total</p>
+                    <span>R$ {getTotalPrice().toFixed(2)}</span>
+                  </Prices>
+                  <ButtonAdd onClick={() => goToStep('delivery')}>
+                    Continuar com a entrega
+                  </ButtonAdd>
+                </>
+              )}
+
+              {step === 'delivery' && (
+                <>
+                  <Titulo>Delivery</Titulo>
+                  <Row>
+                    <InputGroup>
+                      <label htmlFor="fullName">Quem ira receber</label>
+                      <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        value={form.values.fullName}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('fullName', form.errors.fullName)}
+                      </small>
+                    </InputGroup>
+                  </Row>
+                  <Row>
+                    <InputGroup>
+                      <label htmlFor="address">Endereco</label>
+                      <input
+                        type="text"
+                        id="address"
+                        name="address"
+                        value={form.values.address}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('address', form.errors.address)}
+                      </small>
+                    </InputGroup>
+                  </Row>
+                  <Row>
+                    <InputGroup>
+                      <label htmlFor="city">Cidade</label>
+                      <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        value={form.values.city}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>{getErrorMessage('city', form.errors.city)}</small>
+                    </InputGroup>
+                  </Row>
+                  <Row>
+                    <InputGroup maxWidth="180px">
+                      <label htmlFor="cep">CEP</label>
+                      <input
+                        type="text"
+                        id="cep"
+                        name="cep"
+                        value={form.values.cep}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>{getErrorMessage('cep', form.errors.cep)}</small>
+                    </InputGroup>
+                    <InputGroup>
+                      <label htmlFor="number">Numero</label>
+                      <input
+                        type="text"
+                        id="number"
+                        name="number"
+                        value={form.values.number}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('number', form.errors.number)}
+                      </small>
+                    </InputGroup>
+                  </Row>
+                  <Row>
+                    <InputGroup>
+                      <label htmlFor="complement">Complemento (opcional)</label>
+                      <input
+                        type="text"
+                        id="complement"
+                        name="complement"
+                        value={form.values.complement}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('complement', form.errors.complement)}
+                      </small>
+                    </InputGroup>
+                  </Row>
+                  <br />
+                  {/* Opções de pagamento */}
+                  <ButtonAdd onClick={() => goToStep('payment')}>
+                    Continuar para o pagamento
+                  </ButtonAdd>
+                  <br />
+                  <ButtonAdd onClick={() => goToStep('cart')}>
+                    Voltar para o carrinho
+                  </ButtonAdd>{' '}
+                  <br />
+                  {/* Botão para finalizar */}
+                </>
+              )}
+
+              {step === 'payment' && (
+                <>
+                  <Titulo>Pagamento - Valor a pagar R$ 190,00</Titulo>
+                  <Row>
+                    <InputGroup>
+                      <label htmlFor="cardOwner">Nome no Cartao</label>
+                      <input
+                        type="text"
+                        id="cardOwner"
+                        name="cardOwner"
+                        value={form.values.cardOwner}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('cardOwner', form.errors.cardOwner)}
+                      </small>
+                    </InputGroup>
+                  </Row>
+                  <Row>
+                    <InputGroup>
+                      <label htmlFor="numberCard">Numero do Cartao</label>
+                      <input
+                        type="text"
+                        id="numberCard"
+                        name="numberCard"
+                        value={form.values.numberCard}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('numberCard', form.errors.numberCard)}
+                      </small>
+                    </InputGroup>
+                    <InputGroup>
+                      <label htmlFor="codeCard">CVV</label>
+                      <input
+                        type="text"
+                        id="codeCard"
+                        name="codeCard"
+                        value={form.values.codeCard}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('codeCard', form.errors.codeCard)}
+                      </small>
+                    </InputGroup>
+                  </Row>
+                  <Row>
+                    <InputGroup>
+                      <label htmlFor="monthExpired">Mes de vencimento</label>
+                      <input
+                        type="text"
+                        id="monthExpired"
+                        name="monthExpired"
+                        value={form.values.monthExpired}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage(
+                          'monthExpired',
+                          form.errors.monthExpired
+                        )}
+                      </small>
+                    </InputGroup>
+                    <InputGroup>
+                      <label htmlFor="yearExpired">Ano de vencimento</label>
+                      <input
+                        type="text"
+                        id="yearExpired"
+                        name="yearExpired"
+                        value={form.values.yearExpired}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage(
+                          'yearExpired',
+                          form.errors.yearExpired
+                        )}
+                      </small>
+                    </InputGroup>
+                  </Row>
+                  <br />
+                  {/* Opções de pagamento */}
+                  <Button
+                    title="Botao"
+                    type="submit"
+                    onClick={form.handleSubmit}
+                  >
+                    Finalizar
+                  </Button>
+                  <br />
+                  <ButtonAdd onClick={() => goToStep('delivery')}>
+                    Voltar para a edicao de endereco
+                  </ButtonAdd>{' '}
+                  <br />
+                  {/* Botão para finalizar */}
+                </>
+              )}
+
+              {step === 'done' && (
+                <>
+                  <h2>Done</h2>
+                  {/* Opções de pagamento */}
+
+                  {/* Botão para finalizar */}
+                </>
+              )}
+            </form>
           )}
-
-          {step === 'delivery' && (
-            <>
-              <Titulo>Delivery</Titulo>
-              <Row>
-                <InputGroup>
-                  <label htmlFor="fullName">Quem ira receber</label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={form.values.fullName}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>
-                    {getErrorMessage('fullName', form.errors.fullName)}
-                  </small>
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup>
-                  <label htmlFor="address">Endereco</label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    value={form.values.address}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>
-                    {getErrorMessage('address', form.errors.address)}
-                  </small>
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup>
-                  <label htmlFor="city">Cidade</label>
-                  <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    value={form.values.city}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>{getErrorMessage('city', form.errors.city)}</small>
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup maxWidth="180px">
-                  <label htmlFor="cep">CEP</label>
-                  <input
-                    type="text"
-                    id="cep"
-                    name="cep"
-                    value={form.values.cep}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>{getErrorMessage('cep', form.errors.cep)}</small>
-                </InputGroup>
-                <InputGroup>
-                  <label htmlFor="number">Numero</label>
-                  <input
-                    type="text"
-                    id="number"
-                    name="number"
-                    value={form.values.number}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>{getErrorMessage('number', form.errors.number)}</small>
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup>
-                  <label htmlFor="complement">Complemento (opcional)</label>
-                  <input
-                    type="text"
-                    id="complement"
-                    name="complement"
-                    value={form.values.complement}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>
-                    {getErrorMessage('complement', form.errors.complement)}
-                  </small>
-                </InputGroup>
-              </Row>
-              <br />
-              {/* Opções de pagamento */}
-              <ButtonAdd onClick={() => goToStep('payment')}>
-                Continuar para o pagamento
-              </ButtonAdd>
-              <br />
-              <ButtonAdd onClick={() => goToStep('cart')}>
-                Voltar para o carrinho
-              </ButtonAdd>{' '}
-              <br />
-              {/* Botão para finalizar */}
-            </>
-          )}
-
-          {step === 'payment' && (
-            <>
-              <Titulo>Pagamento - Valor a pagar R$ 190,00</Titulo>
-              <Row>
-                <InputGroup>
-                  <label htmlFor="cardOwner">Nome no Cartao</label>
-                  <input
-                    type="text"
-                    id="cardOwner"
-                    name="cardOwner"
-                    value={form.values.cardOwner}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>
-                    {getErrorMessage('cardOwner', form.errors.cardOwner)}
-                  </small>
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup>
-                  <label htmlFor="numberCard">Numero do Cartao</label>
-                  <input
-                    type="text"
-                    id="numberCard"
-                    name="numberCard"
-                    value={form.values.numberCard}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>
-                    {getErrorMessage('numberCard', form.errors.numberCard)}
-                  </small>
-                </InputGroup>
-                <InputGroup>
-                  <label htmlFor="codeCard">CVV</label>
-                  <input
-                    type="text"
-                    id="codeCard"
-                    name="codeCard"
-                    value={form.values.codeCard}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>
-                    {getErrorMessage('codeCard', form.errors.codeCard)}
-                  </small>
-                </InputGroup>
-              </Row>
-              <Row>
-                <InputGroup>
-                  <label htmlFor="monthExpired">Mes de vencimento</label>
-                  <input
-                    type="text"
-                    id="monthExpired"
-                    name="monthExpired"
-                    value={form.values.monthExpired}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>
-                    {getErrorMessage('monthExpired', form.errors.monthExpired)}
-                  </small>
-                </InputGroup>
-                <InputGroup>
-                  <label htmlFor="yearExpired">Ano de vencimento</label>
-                  <input
-                    type="text"
-                    id="yearExpired"
-                    name="yearExpired"
-                    value={form.values.yearExpired}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                  />
-                  <small>
-                    {getErrorMessage('yearExpired', form.errors.yearExpired)}
-                  </small>
-                </InputGroup>
-              </Row>
-              <br />
-              {/* Opções de pagamento */}
-              <Button title="Botao" type="submit" onClick={form.handleSubmit}>
-                Finalizar
-              </Button>
-              <br />
-              <ButtonAdd onClick={() => goToStep('delivery')}>
-                Voltar para a edicao de endereco
-              </ButtonAdd>{' '}
-              <br />
-              {/* Botão para finalizar */}
-            </>
-          )}
-
-          {step === 'done' && (
-            <>
-              <h2>Done</h2>
-              {/* Opções de pagamento */}
-
-              {/* Botão para finalizar */}
-            </>
-          )}
-        </form>
+        </div>
       </Sidebar>
     </CartContainer>
   )

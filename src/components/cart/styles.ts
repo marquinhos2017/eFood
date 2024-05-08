@@ -162,3 +162,7 @@ export const Row = styled.div<RowProps>`
   column-gap: 24px;
   max-top: ${(props) => props.marginTop || 'auto'};
 `
+
+export const Done = styled.div`
+  color: ${cores.rodape};
+`

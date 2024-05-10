@@ -109,6 +109,10 @@ export const Cart = () => {
     setStep(nextStep)
   }
 
+  const reloadPage = () => {
+    window.location.reload()
+  }
+
   const dispatch = useDispatch()
 
   const closeCart = () => {
@@ -160,7 +164,7 @@ export const Cart = () => {
                 desfrute de uma deliciosa e agradável experiência gastronômica.
                 Bom apetite! <br /> <br />
               </p>
-              <ButtonAdd onClick={closeCart}>Concluir</ButtonAdd>{' '}
+              <ButtonAdd onClick={reloadPage}>Concluir</ButtonAdd>{' '}
             </Done>
           ) : (
             <form onSubmit={form.handleSubmit}>

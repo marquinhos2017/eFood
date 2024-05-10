@@ -63,22 +63,6 @@ const Product = () => {
     id_cardapio: modal.id_cardapio
   }
 
-  const [cardapio, setCardapio] = useState({
-    isVisible: false,
-    type: 'image',
-    url: '',
-    nome: '',
-    descricao: '',
-    porcao: '',
-    preco: 0,
-    foto: '',
-    id: '',
-    item_cardapio: 0
-  })
-
-  const [modalEstaberto, setModalEstaAberto] = useState(false)
-  const [modalUrl, setModalUrl] = useState('')
-
   const closeModal = () => {
     setModal({
       isVisible: false,

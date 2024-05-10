@@ -9,8 +9,6 @@ export const ItemList = () => {
     type: 'image',
     url: ''
   })
-  const [modalEstaberto, setModalEstaAberto] = useState(false)
-  const [modalUrl, setModalUrl] = useState('')
 
   const closeModal = () => {
     setModal({

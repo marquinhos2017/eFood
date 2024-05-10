@@ -1,11 +1,4 @@
-import {
-  Conteudo,
-  Imagem,
-  Logo,
-  Titulo,
-  Hamburguer,
-  CardButton
-} from './styles'
+import { Conteudo, Imagem, Logo, Titulo, CardButton } from './styles'
 import bannerImg from '../../assets/banner.png'
 import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom'
@@ -29,7 +22,7 @@ const HeaderCategory = () => {
             <Logo src={logo} />
           </Link>
           <CardButton onClick={openCart}>
-            {items.length} <span>- produto(s) no carrinho</span>
+            {items.length} <span>- produto(s)</span>
             <img src={cartIcon} alt="cartIcon" />
           </CardButton>
         </Conteudo>

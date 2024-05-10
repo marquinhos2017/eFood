@@ -1,7 +1,4 @@
-import Button from '../Button'
-import Tag from '../Tag'
-import { Card, Descricao, Titulo, Infos, Conteudo, LinkButton } from './styles'
-import { Link } from 'react-router-dom'
+import { Card, Descricao, Titulo, Conteudo, LinkButton } from './styles'
 
 type Props = {
   title: string
@@ -14,9 +11,9 @@ type Props = {
 export const Item = ({
   description,
   image,
-  infos,
+
   title,
-  id,
+
   onClick
 }: Props) => {
   const getDescricao = (descricao: string) => {

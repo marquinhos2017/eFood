@@ -1,5 +1,4 @@
 import logo from '../../assets/logo.png'
-import { Logo } from '../Banner/styles'
 import { Container, Icons } from './styles'
 
 import twitter from '../../assets/twitter.png'

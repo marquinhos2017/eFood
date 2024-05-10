@@ -1,4 +1,3 @@
-import Button from '../Button'
 import Tag from '../Tag'
 import {
   Card,
@@ -10,7 +9,6 @@ import {
   Score,
   Buttonsaibamais
 } from './styles'
-import { Link } from 'react-router-dom'
 import star from '../../assets/estrela.png'
 
 type Props = {

@@ -21,8 +21,7 @@ import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
 export const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
-  const [purchase, { isLoading, isError, data, isSuccess }] =
-    usePurchaseMutation()
+  const [purchase, { data, isSuccess }] = usePurchaseMutation()
   const form = useFormik({
     initialValues: {
       fullName: '',
@@ -136,12 +135,6 @@ export const Cart = () => {
 
     if (isTouched && isInvalid) return message
     return ''
-  }
-
-  const validar = () => {
-    if ('fullName' in form.errors) {
-      alert('Valide')
-    }
   }
 
   return (

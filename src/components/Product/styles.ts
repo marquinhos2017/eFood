@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
-import Button from '../Button'
-import { ButtonLink } from '../Button/styles'
+
 import { Link } from 'react-router-dom'
 
 export const Buttonsaibamais = styled(Link)`

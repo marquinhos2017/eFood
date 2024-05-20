@@ -285,7 +285,36 @@ export const Cart = () => {
                   </Row>
                   <br />
                   {/* Opções de pagamento */}
-                  <ButtonAdd onClick={() => goToStep('payment')}>
+                  <ButtonAdd
+                    onClick={() => {
+                      if (
+                        form.touched.fullName &&
+                        !form.errors.fullName &&
+                        form.touched.address &&
+                        !form.errors.address &&
+                        form.touched.city &&
+                        !form.errors.city &&
+                        form.touched.cep &&
+                        !form.errors.cep &&
+                        form.touched.number &&
+                        !form.errors.number &&
+                        form.touched.complement &&
+                        !form.errors.complement
+                      ) {
+                        goToStep('payment')
+                      } else {
+                        // Se algum dos campos tiver erro, marque-os como tocados para exibir os erros
+                        form.setTouched({
+                          fullName: true,
+                          address: true,
+                          city: true,
+                          cep: true,
+                          number: true,
+                          complement: true
+                        })
+                      }
+                    }}
+                  >
                     Continuar para o pagamento
                   </ButtonAdd>
                   <br />
